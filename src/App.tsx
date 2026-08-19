@@ -17,9 +17,14 @@ export default function App() {
       if (isPlaying) {
         videoRef.current.pause();
       } else {
-        videoRef.current.play();
+        const playPromise = videoRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => {
+            console.error("Playback failed:", error);
+            setIsPlaying(false);
+          });
+        }
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -28,7 +33,7 @@ export default function App() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://www.dropbox.com/scl/fi/1u1imbgl2gzvob3fovgrf/bg.jpg?rlkey=8knpu1e33m2th2n8z4a4kv4kc&st=y1fdt9rt&raw=1"
+          src="https://dl.dropboxusercontent.com/scl/fi/1u1imbgl2gzvob3fovgrf/bg.jpg?rlkey=8knpu1e33m2th2n8z4a4kv4kc&st=y1fdt9rt"
           alt="Background"
           className="w-full h-full object-cover opacity-70"
         />
@@ -54,10 +59,10 @@ export default function App() {
         <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 aspect-video bg-black/50 backdrop-blur-sm group ring-1 ring-white/5">
           <video
             ref={videoRef}
-            src="https://www.dropbox.com/scl/fi/jiihsjg7x6uaom35ob5w8/Print.mp4?rlkey=ryheuxybrjv1vab1zc0cmkpfw&st=8rwto2fv&raw=1"
+            src="https://dl.dropboxusercontent.com/scl/fi/jiihsjg7x6uaom35ob5w8/Print.mp4?rlkey=ryheuxybrjv1vab1zc0cmkpfw&st=8rwto2fv"
             className="w-full h-full object-cover cursor-pointer"
             onClick={togglePlay}
-            controls={isPlaying} // Show native controls only when playing
+            controls={true} // Always enable controls but hide them under overlay when paused
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             playsInline
