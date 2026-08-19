@@ -2,5 +2,7 @@
   "name": "Video Hero",
   "description": "A single hero page with a background image, an X (Twitter) button, and a central video player.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
