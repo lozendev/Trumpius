@@ -59,7 +59,7 @@ export default function App() {
         <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 aspect-video bg-black/50 backdrop-blur-sm group ring-1 ring-white/5">
           <video
             ref={videoRef}
-            src="https://dl.dropboxusercontent.com/scl/fi/jiihsjg7x6uaom35ob5w8/Print.mp4?rlkey=ryheuxybrjv1vab1zc0cmkpfw&st=8rwto2fv"
+            src={`${import.meta.env.BASE_URL}Print.mp4`}
             className="w-full h-full object-cover cursor-pointer"
             onClick={togglePlay}
             controls={true} // Always enable controls but hide them under overlay when paused
